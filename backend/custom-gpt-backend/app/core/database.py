@@ -6,7 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./sql_app.db")
+# Get environment, defaulting to development
+ENV = os.getenv("ENV", "development")
+
+# Enforce DATABASE_URL in production, use SQLite as fallback only in development
+if ENV == "production" and not os.getenv("DATABASE_URL"):
+    raise ValueError("DATABASE_URL must be set in production environment")
+
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL") if ENV == "production" else "sqlite:///./sql_app.db"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
