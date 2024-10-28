@@ -1,0 +1,285 @@
+/* Panel control buttons */
+.panel-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-button {
+    background: none;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    transition: all 0.2s;
+}
+
+.control-button:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.control-button i {
+    font-size: 1.2rem;
+}
+
+/* Existing styles from the HTML file */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header {
+    height: 50px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    justify-content: space-between;
+}
+
+/* Main container and panels */
+.main-container {
+    height: calc(100vh - 80px);
+    display: flex;
+}
+
+.left-panel {
+    width: 250px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    overflow-y: auto;
+    transition: width 0.3s;
+}
+
+.left-panel.collapsed {
+    width: 0;
+    overflow: hidden;
+}
+
+/* Workspace with bisected layout */
+.workspace {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    position: relative;
+}
+
+.workspace-top {
+    height: 60%;
+    display: flex;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.workspace-top-left {
+    width: 50%;
+    border-right: 1px solid #dee2e6;
+    padding: 20px;
+    overflow: auto;
+}
+
+.workspace-top-right {
+    width: 50%;
+    padding: 20px;
+    overflow: auto;
+}
+
+.workspace-bottom {
+    height: 40%;
+    padding: 20px;
+    overflow: auto;
+}
+
+/* Service items and components */
+.service-item {
+    padding: 12px;
+    margin: 8px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: move;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.service-item:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f8f9fa;
+}
+
+.service-item i {
+    margin-right: 8px;
+    color: #6c757d;
+}
+
+.workspace-item {
+    position: absolute;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    min-width: 150px;
+    cursor: move;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Accordion customization */
+.accordion-button {
+    background-color: #fff;
+    padding: 12px 15px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.accordion-body {
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Footer */
+.footer {
+    height: 30px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    text-align: center;
+    line-height: 30px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .workspace-top {
+        flex-direction: column;
+    }
+
+    .workspace-top-left,
+    .workspace-top-right {
+        width: 100%;
+        height: 50%;
+    }
+
+    .workspace-top-left {
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+    }
+}
+
+/* ChatGPT Interface */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    word-wrap: break-word;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+}
+
+.message.assistant {
+    align-self: flex-start;
+    background-color: #f0f2f5;
+    color: #1a1a1a;
+}
+
+.chat-input-container {
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+    background-color: #ffffff;
+}
+
+.chat-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input {
+    flex: 1;
+    min-height: 40px;
+    max-height: 120px;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    resize: vertical;
+}
+
+.chat-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.chat-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chat-button.primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.chat-button.secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.chat-button:hover {
+    opacity: 0.9;
+}
+
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #6c757d;
+}
+
+.loading-indicator i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
